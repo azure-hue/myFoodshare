@@ -11,6 +11,14 @@ use App\Http\Controllers\LikeController;
 use App\Http\Controllers\ImageController;
 
 
+// Route::get('/', function() {
+//     return response()->json([
+//         'message' => 'Hello, world!',
+//         'status' => 'success'
+//     ]);
+// });
+
+
 
 Route::get('/', [RecipeController::class, 'index'])->name('welcome');
 

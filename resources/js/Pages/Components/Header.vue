@@ -74,9 +74,14 @@ const {user} = defineProps({
     default: ''
   }
 })
+
+const setUserLike = ()=>{
+  
+}
 const likes = ref(0)
 onMounted(() => {
   emitter.on('likeStatusChanged', async (newCount) => {
+    if(user == null) return
     if(user.id === undefined || user === "") return
     const count = await getUserLikeCount(user.id);
     likes.value = count;
@@ -86,6 +91,7 @@ onMounted(() => {
 
 
 async function getUserLikeCount(userId) {
+  if(user === null) return
   if(userId === undefined || userId === '') return
   try {
     const response = await axios.get('/likes/count', {

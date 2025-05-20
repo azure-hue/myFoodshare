@@ -19,7 +19,7 @@ COPY . .
 RUN composer install --no-dev --optimize-autoloader
 
 # Step 7: Install Node dependencies and build assets
-RUN npm install && npm run prod
+RUN npm install && npm run build
 
 # Step 8: Expose port 8000 for Laravel server
 EXPOSE 8000

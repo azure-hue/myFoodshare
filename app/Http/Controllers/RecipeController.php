@@ -11,9 +11,10 @@ class RecipeController extends Controller
 {
     public function index(Request $request)
     {
-
         $recipes = Recipe::select('id','user_id','recipeDetail')->paginate(6);
         $user = auth()->user();
+
+        // dd($recipes);
 
         return Inertia::render('Welcome', [
             'recipes' => $recipes,

@@ -53,6 +53,8 @@ import { router } from '@inertiajs/vue3'
 import axios from 'axios'
 import emmiter from '@/Pages/Utils/EventBus'
 import fetchChefProfile from '@/Pages/Utils/FetchChef'
+import {showErrorToast1} from '@/Pages/Utils/Toast.js'
+
 
 // ✅ Use camelCase in defineProps
 const props = defineProps({
@@ -109,12 +111,11 @@ const fetchChef = async () => {
 fetchChef()
 
 const toggleFavorite = () => {
-  if (props.userId === null) {
+  if (props.userId === null || props.userId === undefined) {
     alert('Please log in to favorite recipes.')
     return
   }
   isFavorited.value = !isFavorited.value
-  console.log(isFavorited.value ? 'Added to favorites' : 'Removed from favorites')
 }
 
 const viewRecipe = () => {
@@ -127,8 +128,8 @@ const viewRecipe = () => {
 }
 
 const toggleLike = () => {
-  if (props.userId === null) {
-    alert('Please log in to favorite recipes.')
+  if (props.userId === null || props.userId === undefined) {
+    showErrorToast1('Please log in to favorite recipes.')
     return
   }
 

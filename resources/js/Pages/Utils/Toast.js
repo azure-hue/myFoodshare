@@ -8,6 +8,16 @@ export function showErrorToast() {
     })
 }
 
+export function showErrorToast1(msg='Something bad occured!') {
+    Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: msg,
+        confirmButtonText: 'OK',
+        confirmButtonColor: '#3085d6',
+    })
+}
+
 export function showSuccessToast() {
     Swal.fire({
         icon: 'success',
